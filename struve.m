@@ -26,32 +26,16 @@ function y = struve(v, z, tol, maxterms)
     y = dy;
 
     if abs(z) < 30
-
-    for n = 1:maxterms
-        dy = (-dy.*arg)./((n+0.5)*(n+v+0.5));
-        y = y + dy;
-        
-        if abs(dy) < tol*abs(y)
-            break
-        end
-    end
-    else
-    
-        sign = 1;
-        logdy = log(dy);
-        logarg = log(arg);
-    
         for n = 1:maxterms
-            sign = -sign;
-            logdy = logdy + logarg - log(n+0.5) - log(n+v+0.5);
-            
-            dy = sign*exp(logdy);
+            dy = (-dy.*arg)./((n+0.5)*(n+v+0.5));
             y = y + dy;
-        
+            
             if abs(dy) < tol*abs(y)
                 break
             end
         end
+    else
+        y = dy;
     end
     
     y = y.*finalmult;
