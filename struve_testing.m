@@ -1,8 +1,9 @@
 close all
 clear all
 
-x = linspace(0,29,1000);
-y = struve(1,x);
+x = linspace(0,50,1000);
+v = 1;
+y = struve(v,x);
 
 fig1 = figure(1);
 grid on
