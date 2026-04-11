@@ -1,7 +1,11 @@
 close all
 clear all
 
-x = linspace(0,50,1000);
+xmax = 50;
+xmin = 0;
+resolution = 3000;
+dx = (xmax-xmin)/resolution;
+x = linspace(xmin, xmax, resolution);
 v = 1;
 y = struve(v,x);
 
@@ -12,3 +16,14 @@ hold on
 yline(0)
 
 plot(x,y)
+xlim([xmin xmax])
+
+fig2 = figure(2);
+grid on 
+hold on
+
+y2 = gradient(y,dx);
+
+plot(x,y2)
+xlim([xmin+1 xmax-1])
+
